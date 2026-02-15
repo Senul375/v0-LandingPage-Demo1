@@ -5,9 +5,13 @@ import { useState } from "react"
 import { ArrowLeft, Send, Mail, MapPin, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
+import { Footer } from "@/components/landing/footer"
+import { CTABanner } from "@/components/landing/cta-banner"
+import { CTAModal } from "@/components/ui/cta-modal"
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [ctaOpen, setCtaOpen] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -186,10 +190,16 @@ export default function ContactPage() {
         </div>
       </main>
 
-      {/* Simple footer */}
-      <footer className="border-t border-border px-4 py-8 text-center text-xs text-muted-foreground md:px-8">
-        {`\u00A9 ${new Date().getFullYear()} Jax Sterling. All rights reserved.`}
-      </footer>
+      {/* CTA Section */}
+      <CTABanner
+        headline="Ready to Build Your Executive Engine?"
+        buttonText="Get the Protocol"
+        onCTAClick={() => setCtaOpen(true)}
+      />
+
+      <Footer />
+
+      <CTAModal open={ctaOpen} onOpenChange={setCtaOpen} />
     </div>
   )
 }
