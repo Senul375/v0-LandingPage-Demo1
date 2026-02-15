@@ -4,6 +4,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { AnimatedOrb } from "@/components/ui/animated-orb"
 
 interface HeroProps {
   onCTAClick: () => void
@@ -12,6 +13,9 @@ interface HeroProps {
 export function Hero({ onCTAClick }: HeroProps) {
   return (
     <section className="relative flex min-h-screen w-full items-center overflow-hidden">
+      {/* Animated Orb Background */}
+      <AnimatedOrb />
+
       {/* Background image for mobile */}
       <div className="absolute inset-0 lg:hidden">
         <Image
