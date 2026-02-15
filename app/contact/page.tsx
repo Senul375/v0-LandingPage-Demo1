@@ -8,10 +8,12 @@ import { motion } from "framer-motion"
 import { Footer } from "@/components/landing/footer"
 import { CTABanner } from "@/components/landing/cta-banner"
 import { CTAModal } from "@/components/ui/cta-modal"
+import { LearnMoreModal } from "@/components/ui/learn-more-modal"
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
   const [ctaOpen, setCtaOpen] = useState(false)
+  const [learnMoreOpen, setLearnMoreOpen] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -186,6 +188,25 @@ export default function ContactPage() {
                 </div>
               </div>
             ))}
+
+            {/* Action Buttons */}
+            <div className="flex flex-col gap-3 border-t border-border pt-8">
+              <Button
+                size="lg"
+                className="w-full rounded-lg font-mono text-sm uppercase tracking-wider"
+                onClick={() => setCtaOpen(true)}
+              >
+                Join Program
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full rounded-lg font-mono text-sm uppercase tracking-wider"
+                onClick={() => setLearnMoreOpen(true)}
+              >
+                Learn More
+              </Button>
+            </div>
           </motion.div>
         </div>
       </main>
@@ -200,6 +221,11 @@ export default function ContactPage() {
       <Footer />
 
       <CTAModal open={ctaOpen} onOpenChange={setCtaOpen} />
+      <LearnMoreModal
+        open={learnMoreOpen}
+        onOpenChange={setLearnMoreOpen}
+        onJoinClick={() => setCtaOpen(true)}
+      />
     </div>
   )
 }
