@@ -58,7 +58,7 @@ export function SocialProof() {
                     Biometric Audit Log
                   </span>
                   <span className="font-mono text-[8px] text-muted-foreground uppercase">
-                    Ref: {Math.random().toString(36).substring(7).toUpperCase()}
+                    Ref: {t.name.split('').map(c => c.charCodeAt(0)).join('').substring(0, 6)}
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">
