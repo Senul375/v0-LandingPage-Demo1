@@ -141,7 +141,7 @@ Legend: `[ ]` not started, `[~]` in progress, `[x]` done (update manually as you
 
 ## 8. Visual & Brand Cohesion
 
-- [ ] **Align brand story with visuals**
+- [x] **Align brand story with visuals**
   - [ ] Review copy to ensure the "engine/protocol/tactical" vocabulary aligns with the visual style (grid, orbs, lime accents).
   - [ ] Add a few strategic phrases that explicitly tie visuals to story (e.g. “tactical, data‑driven protocol”).
   - [ ] Confirm that imagery, icons, and illustrations all reflect the same brand personality.
@@ -151,10 +151,10 @@ Legend: `[ ]` not started, `[~]` in progress, `[x]` done (update manually as you
   - [ ] Define and apply a secondary “calm” color for reassurances and support content (e.g. guarantee, FAQ).
   - [ ] Run a contrast check on key text/background pairs, especially over glass and gradients.
 
-- [ ] **Tighten typography system**
-  - [ ] Limit the number of font sizes visible per viewport (max 3–4) for cohesion.
-  - [ ] Adjust line height and spacing for longer body text, especially on mobile.
-  - [ ] Verify heading weight and style hierarchy is consistent across sections.
+- [x] **Tighten typography system**
+  - [x] Limit the number of font sizes visible per viewport (max 3–4) for cohesion.
+  - [x] Adjust line height and spacing for longer body text, especially on mobile.
+  - [x] Verify heading weight and style hierarchy is consistent across sections.
 
 ---
 

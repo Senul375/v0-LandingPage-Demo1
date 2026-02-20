@@ -36,6 +36,9 @@ export function Philosophy() {
           <h2 className="text-balance text-3xl font-bold tracking-tight text-foreground md:text-4xl">
             The Philosophy
           </h2>
+          <p className="mx-auto mt-3 max-w-2xl font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            Precision protocols built on tactical efficiency and bio-individual data
+          </p>
           <div className="mx-auto mt-4 h-px w-16 bg-primary" />
         </ScrollReveal>
 
@@ -52,7 +55,7 @@ export function Philosophy() {
               <h3 className="text-lg font-bold text-foreground">
                 {pillar.title}
               </h3>
-              <p className="leading-relaxed text-muted-foreground">
+              <p className="text-sm leading-relaxed text-muted-foreground">
                 {pillar.description}
               </p>
             </motion.div>

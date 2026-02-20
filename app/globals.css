@@ -37,6 +37,9 @@
     --sidebar-accent-foreground: 0 0% 91%;
     --sidebar-border: 0 0% 15%;
     --sidebar-ring: 86 100% 68%;
+    /* Secondary "calm" color for reassurances and support content */
+    --calm: 200 30% 55%;
+    --calm-foreground: 0 0% 91%;
   }
 }
 
@@ -49,6 +52,18 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Improved line height for better readability, especially on mobile */
+    line-height: 1.6;
+  }
+  /* Standardize heading line heights */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+  }
+  /* Improved line height for body text on mobile */
+  @media (max-width: 768px) {
+    p {
+      line-height: 1.7;
+    }
   }
 }
 
@@ -101,6 +116,19 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(198, 255, 94, 0.15);
+  }
+
+  /* Calm color utility for reassurances and support content */
+  .text-calm {
+    color: hsl(var(--calm));
+  }
+
+  .bg-calm {
+    background-color: hsl(var(--calm) / 0.1);
+  }
+
+  .border-calm {
+    border-color: hsl(var(--calm) / 0.3);
   }
 }
 

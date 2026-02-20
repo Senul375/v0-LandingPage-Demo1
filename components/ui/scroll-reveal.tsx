@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import { useRef, useEffect, useState } from "react"
+import { motion, useInView, useReducedMotion } from "framer-motion"
 
 interface ScrollRevealProps {
   children: React.ReactNode
@@ -30,15 +30,16 @@ export function ScrollReveal({
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once, margin: "-50px" })
+  const prefersReducedMotion = useReducedMotion()
   const { x, y } = directionMap[direction]
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial={{ opacity: 0, x, y }}
-      animate={isInView ? { opacity: 1, x: 0, y: 0 } : { opacity: 0, x, y }}
-      transition={{ duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
+      initial={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x, y }}
+      animate={isInView ? { opacity: 1, x: 0, y: 0 } : (prefersReducedMotion ? { opacity: 0 } : { opacity: 0, x, y })}
+      transition={prefersReducedMotion ? { duration: 0 } : { duration, delay, ease: [0.25, 0.1, 0.25, 1] }}
     >
       {children}
     </motion.div>
@@ -58,6 +59,7 @@ export function StaggerContainer({
 }: StaggerContainerProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
+  const prefersReducedMotion = useReducedMotion()
 
   return (
     <motion.div
@@ -65,7 +67,14 @@ export function StaggerContainer({
       className={className}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      variants={{
+      variants={prefersReducedMotion ? {
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0,
+          },
+        },
+      } : {
         hidden: {},
         visible: {
           transition: {
@@ -79,6 +88,7 @@ export function StaggerContainer({
   )
 }
 
+// Stagger child variants - respects reduced motion preference
 export const staggerChild = {
   hidden: { opacity: 0, y: 20 },
   visible: {

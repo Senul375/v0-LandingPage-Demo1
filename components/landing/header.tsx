@@ -11,19 +11,44 @@ const navLinks = [
   { label: "Philosophy", href: "#philosophy" },
   { label: "Program", href: "#program" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "/contact" },
+  { label: "Apply", href: "/contact" },
 ]
 
 export function Header() {
   const { openModal } = useCTA()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("")
 
   useEffect(() => {
     function onScroll() {
       setScrolled(window.scrollY > 50)
+      
+      // Scrollspy: determine which section is currently in view
+      const sections = navLinks
+        .filter(link => link.href.startsWith("#"))
+        .map(link => ({
+          id: link.href.substring(1),
+          element: document.querySelector(link.href),
+        }))
+        .filter(s => s.element !== null)
+
+      const scrollPosition = window.scrollY + 100 // Offset for header
+
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i]
+        if (section.element) {
+          const rect = section.element.getBoundingClientRect()
+          const top = rect.top + window.scrollY
+          if (scrollPosition >= top) {
+            setActiveSection(`#${section.id}`)
+            break
+          }
+        }
+      }
     }
     window.addEventListener("scroll", onScroll, { passive: true })
+    onScroll() // Initial check
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
@@ -68,7 +93,11 @@ export function Header() {
                 <button
                   key={link.label}
                   onClick={() => handleNavClick(link.href)}
-                  className="font-mono text-xs uppercase tracking-widest text-muted-foreground transition-colors hover:text-foreground"
+                  className={`font-mono text-xs uppercase tracking-widest transition-colors ${
+                    activeSection === link.href
+                      ? "text-primary font-semibold"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
                 >
                   {link.label}
                 </button>
@@ -87,7 +116,7 @@ export function Header() {
               className="rounded-lg font-mono text-xs uppercase tracking-wider"
               onClick={openModal}
             >
-              Start Training
+              Access Protocol
             </Button>
           </nav>
 
@@ -136,16 +165,21 @@ export function Header() {
                 </Link>
               )
             )}
-            <Button
-              size="lg"
-              className="mt-4 rounded-lg font-mono uppercase tracking-wider"
-              onClick={() => {
-                setMobileOpen(false)
-                openModal()
-              }}
-            >
-              Start Training
-            </Button>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <Button
+                size="lg"
+                className="rounded-lg font-mono uppercase tracking-wider"
+                onClick={() => {
+                  setMobileOpen(false)
+                  openModal()
+                }}
+              >
+                Start Training
+              </Button>
+              <p className="text-center text-xs text-muted-foreground">
+                <span className="font-semibold text-primary">15 spots/month</span> • 30-day guarantee
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
