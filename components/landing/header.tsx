@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useCTA } from "@/hooks/use-cta"
 
 const navLinks = [
   { label: "Philosophy", href: "#philosophy" },
@@ -13,11 +14,8 @@ const navLinks = [
   { label: "Contact", href: "/contact" },
 ]
 
-interface HeaderProps {
-  onCTAClick: () => void
-}
-
-export function Header({ onCTAClick }: HeaderProps) {
+export function Header() {
+  const { openModal } = useCTA()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -51,9 +49,8 @@ export function Header({ onCTAClick }: HeaderProps) {
   return (
     <>
       <header
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
-          scrolled ? "glass-strong py-3" : "bg-transparent py-5"
-        }`}
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${scrolled ? "glass-strong py-3" : "bg-transparent py-5"
+          }`}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 md:px-8 lg:px-16">
           {/* Logo */}
@@ -88,7 +85,7 @@ export function Header({ onCTAClick }: HeaderProps) {
             <Button
               size="sm"
               className="rounded-lg font-mono text-xs uppercase tracking-wider"
-              onClick={onCTAClick}
+              onClick={openModal}
             >
               Start Training
             </Button>
@@ -144,7 +141,7 @@ export function Header({ onCTAClick }: HeaderProps) {
               className="mt-4 rounded-lg font-mono uppercase tracking-wider"
               onClick={() => {
                 setMobileOpen(false)
-                onCTAClick()
+                openModal()
               }}
             >
               Start Training

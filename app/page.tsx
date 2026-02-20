@@ -1,6 +1,3 @@
-"use client"
-
-import { useState } from "react"
 import { Header } from "@/components/landing/header"
 import { Hero } from "@/components/landing/hero"
 import { Philosophy } from "@/components/landing/philosophy"
@@ -10,27 +7,20 @@ import { Pricing } from "@/components/landing/pricing"
 import { FAQ } from "@/components/landing/faq"
 import { CTABanner } from "@/components/landing/cta-banner"
 import { Footer } from "@/components/landing/footer"
-import { CTAModal } from "@/components/ui/cta-modal"
 import { BackToTop } from "@/components/ui/back-to-top"
+import { CTAProvider } from "@/hooks/use-cta"
 
 export default function Page() {
-  const [modalOpen, setModalOpen] = useState(false)
-
-  function openModal() {
-    setModalOpen(true)
-  }
-
   return (
-    <>
-      <Header onCTAClick={openModal} />
+    <CTAProvider>
+      <Header />
 
       <main>
-        <Hero onCTAClick={openModal} />
+        <Hero />
 
         <CTABanner
           headline="Ready to operate at your peak?"
           buttonText="Access the Protocol"
-          onCTAClick={openModal}
         />
 
         <Philosophy />
@@ -38,7 +28,6 @@ export default function Page() {
         <CTABanner
           headline="Join the executives who refuse to slow down."
           buttonText="Claim My Spot"
-          onCTAClick={openModal}
         />
 
         <SocialProof />
@@ -48,10 +37,9 @@ export default function Page() {
         <CTABanner
           headline="Your body is your most valuable asset."
           buttonText="Get Started Now"
-          onCTAClick={openModal}
         />
 
-        <Pricing onCTAClick={openModal} />
+        <Pricing />
 
         <FAQ />
       </main>
@@ -59,7 +47,6 @@ export default function Page() {
       <Footer />
 
       <BackToTop />
-      <CTAModal open={modalOpen} onOpenChange={setModalOpen} />
-    </>
+    </CTAProvider>
   )
 }

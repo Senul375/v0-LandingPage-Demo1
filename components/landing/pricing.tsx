@@ -5,6 +5,7 @@ import { useRef } from "react"
 import { Check, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { useCTA } from "@/hooks/use-cta"
 
 const included = [
   "12-week personalised training protocol",
@@ -16,11 +17,8 @@ const included = [
   "Progress tracking dashboard access",
 ]
 
-interface PricingProps {
-  onCTAClick: () => void
-}
-
-export function Pricing({ onCTAClick }: PricingProps) {
+export function Pricing() {
+  const { openModal } = useCTA()
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
@@ -45,21 +43,31 @@ export function Pricing({ onCTAClick }: PricingProps) {
                 : { opacity: 0, scale: 0.95 }
             }
             transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-            className="glass-lime glow-lime overflow-hidden rounded-2xl"
+            className="glass-lime glow-lime relative overflow-hidden rounded-2xl border-primary/20"
           >
+            {/* Premium Badge */}
+            <div className="absolute right-0 top-0 bg-primary px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-background">
+              Most Selected
+            </div>
             {/* Header */}
             <div className="border-b border-white/10 px-8 pb-8 pt-10 text-center">
+              <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                15 SPOTS AVAILABLE PER MONTH
+              </p>
               <p className="mb-1 font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 The Executive Engine Protocol
               </p>
               <div className="mt-4 flex items-baseline justify-center gap-3">
-                <span className="text-lg text-muted-foreground line-through">
-                  $1,200
-                </span>
+                <div className="flex flex-col items-end">
+                  <span className="text-xs text-muted-foreground">Total Value: $3,500</span>
+                  <span className="text-lg text-muted-foreground line-through">
+                    $1,200
+                  </span>
+                </div>
                 <span className="text-5xl font-bold text-primary">$599</span>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">
-                One-time access. No subscriptions.
+                One-time investment. Total Transformation.
               </p>
             </div>
 
@@ -78,7 +86,7 @@ export function Pricing({ onCTAClick }: PricingProps) {
               <Button
                 size="lg"
                 className="w-full rounded-lg font-mono text-sm uppercase tracking-wider"
-                onClick={onCTAClick}
+                onClick={openModal}
               >
                 Get the Protocol
               </Button>

@@ -5,12 +5,10 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { AnimatedOrb } from "@/components/ui/animated-orb"
+import { useCTA } from "@/hooks/use-cta"
 
-interface HeroProps {
-  onCTAClick: () => void
-}
-
-export function Hero({ onCTAClick }: HeroProps) {
+export function Hero() {
+  const { openModal } = useCTA()
   return (
     <section className="relative flex min-h-screen w-full items-center overflow-hidden">
       {/* Animated Orb Background */}
@@ -39,8 +37,8 @@ export function Hero({ onCTAClick }: HeroProps) {
             <p className="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-primary">
               The Engine Protocol
             </p>
-            <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-6xl">
-              Build a body that works as hard as your brain does.
+            <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-7xl">
+              Build a high-performance body that works as hard as your business.
             </h1>
           </motion.div>
 
@@ -50,8 +48,8 @@ export function Hero({ onCTAClick }: HeroProps) {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             className="max-w-lg text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
-            Precision performance for high-stakes lives. 30-minute functional
-            protocols engineered for the elite.
+            Precision 30-minute protocols engineered for the executive schedule.
+            Reclaim your focus, strength, and longevity without sacrificing your calendar.
           </motion.p>
 
           <motion.div
@@ -63,14 +61,19 @@ export function Hero({ onCTAClick }: HeroProps) {
             <Button
               size="lg"
               className="glow-lime rounded-lg px-8 font-mono text-sm uppercase tracking-wider"
-              onClick={onCTAClick}
+              onClick={openModal}
             >
-              Get the Protocol
+              Access the Protocol
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-            <span className="text-xs text-muted-foreground">
-              30-day money-back guarantee
-            </span>
+            <div className="flex flex-col">
+              <span className="text-xs font-semibold text-primary uppercase tracking-wider">
+                Limited to 15 spots/month
+              </span>
+              <span className="text-[10px] text-muted-foreground">
+                30-day ironclad guarantee
+              </span>
+            </div>
           </motion.div>
 
           {/* Quick stats */}

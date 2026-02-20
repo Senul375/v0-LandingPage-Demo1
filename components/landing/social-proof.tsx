@@ -12,7 +12,7 @@ const testimonials = [
     role: "CEO, SaaS Startup",
     avatar: "/images/testimonial-mark.jpg",
     quote:
-      "I went from skipping workouts to completing 5 sessions a week without touching my calendar. Jax understands how operators think.",
+      "I went from skipping workouts to completing 5 sessions a week without touching my calendar. My focus during deep work has doubled.",
     rating: 5,
   },
   {
@@ -20,7 +20,7 @@ const testimonials = [
     role: "Managing Partner, VC Fund",
     avatar: "/images/testimonial-sarah.jpg",
     quote:
-      "The bio-data integration changed everything. For the first time, my training adapts to my travel schedule and stress levels in real time.",
+      "The bio-integration changed everything. My HRV increased by 22% in 6 weeks. This isn't just fitness; it's operational optimization.",
     rating: 5,
   },
 ]

@@ -3,14 +3,15 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
+import { useCTA } from "@/hooks/use-cta"
 
 interface CTABannerProps {
   headline: string
   buttonText: string
-  onCTAClick: () => void
 }
 
-export function CTABanner({ headline, buttonText, onCTAClick }: CTABannerProps) {
+export function CTABanner({ headline, buttonText }: CTABannerProps) {
+  const { openModal } = useCTA()
   return (
     <ScrollReveal>
       <div className="mx-auto max-w-7xl px-4 py-12 md:px-8 md:py-16 lg:px-16">
@@ -21,7 +22,7 @@ export function CTABanner({ headline, buttonText, onCTAClick }: CTABannerProps) 
           <Button
             size="lg"
             className="glow-lime rounded-lg px-8 font-mono text-sm uppercase tracking-wider"
-            onClick={onCTAClick}
+            onClick={openModal}
           >
             {buttonText}
             <ArrowRight className="ml-2 h-4 w-4" />
