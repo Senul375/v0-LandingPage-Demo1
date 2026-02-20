@@ -70,6 +70,9 @@ export function Pricing() {
               <p className="mt-2 text-sm text-muted-foreground">
                 One-time investment. Total Transformation.
               </p>
+              <p className="mt-1 text-xs text-calm italic">
+                Founder-led cohort pricing for Q2 2026
+              </p>
             </div>
 
             {/* Features */}
@@ -80,6 +83,34 @@ export function Pricing() {
                   <span className="text-sm text-foreground">{item}</span>
                 </div>
               ))}
+            </div>
+
+            {/* Decision aids */}
+            <div className="px-8 pb-4 border-t border-white/10 pt-6">
+              <p className="mb-3 text-xs font-semibold text-foreground uppercase tracking-wider text-center">
+                Ideal if you:
+              </p>
+              <ul className="flex flex-col gap-2 text-xs text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>You're a founder, exec, or high-stakes professional</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>You can commit 30 minutes/day, 3x per week</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>You're comfortable sharing biometric data (Oura/Whoop/Apple Watch)</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Guarantee line inside card */}
+            <div className="px-8 pb-4">
+              <p className="text-center text-xs text-calm">
+                <span className="font-semibold">30-day guarantee</span> • Full refund if not satisfied
+              </p>
             </div>
 
             {/* CTA */}
@@ -103,17 +134,17 @@ export function Pricing() {
           >
             <div className="flex flex-col items-center gap-4">
               <div className="flex items-center gap-2">
-                <Shield className="h-5 w-5 text-primary" />
-                <span className="font-mono text-sm font-semibold uppercase tracking-wider text-foreground">
+                <Shield className="h-5 w-5 text-calm" />
+                <span className="font-mono text-sm font-semibold uppercase tracking-wider text-calm">
                   Ironclad Resilience Guarantee
                 </span>
               </div>
-              <Signature className="h-12 w-auto text-primary/40" />
+              <Signature className="h-12 w-auto text-calm/40" />
             </div>
             <p className="max-w-md text-xs leading-relaxed text-muted-foreground italic">
               "Try the full protocol for 30 days. If you don't feel sharper, stronger, and more energised, we'll refund every penny. No questions asked."
             </p>
-            <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-primary/40">
+            <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-calm/60">
               Personal Commitment from Jax Sterling
             </span>
           </motion.div>

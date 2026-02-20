@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ChevronDown } from "lucide-react"
 import { AnimatedOrb } from "@/components/ui/animated-orb"
 import { useCTA } from "@/hooks/use-cta"
 
@@ -34,12 +34,22 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <p className="mb-4 font-mono text-xs uppercase tracking-[0.3em] text-primary">
-              The Engine Protocol
-            </p>
+            <div className="flex items-center gap-3 mb-4">
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary">
+                The Engine Protocol
+              </p>
+              <div className="rounded-full bg-primary/20 border border-primary/30 px-3 py-1">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-primary">
+                  500+ Executives Trained
+                </span>
+              </div>
+            </div>
             <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight text-foreground md:text-5xl lg:text-7xl">
               Build a high-performance body that works as hard as your business.
             </h1>
+            <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              A tactical, data-driven protocol engineered for precision
+            </p>
           </motion.div>
 
           <motion.p
@@ -48,7 +58,7 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
             className="max-w-lg text-pretty text-lg leading-relaxed text-muted-foreground md:text-xl"
           >
-            Precision 30-minute protocols engineered for the executive schedule.
+            Three 30-minute sessions per week. 12 weeks total. No missed board meetings.
             Reclaim your focus, strength, and longevity without sacrificing your calendar.
           </motion.p>
 
@@ -97,6 +107,24 @@ export function Hero() {
             ))}
           </motion.div>
         </div>
+
+        {/* Scroll Down Indicator */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 lg:flex"
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            Scroll to explore
+          </span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown className="h-5 w-5 text-muted-foreground" />
+          </motion.div>
+        </motion.div>
 
         {/* Hero Image - Desktop */}
         <motion.div

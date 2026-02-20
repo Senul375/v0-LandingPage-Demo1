@@ -49,21 +49,21 @@ export function SocialProof() {
             <motion.div
               key={t.name}
               variants={staggerChild}
-              className="glass relative flex flex-col gap-5 rounded-xl p-8 border-primary/10 hover:border-primary/30 transition-colors"
+              className="glass relative flex flex-col gap-5 rounded-xl p-8 border-border hover:border-calm/30 transition-colors"
             >
               {/* Technical Header */}
               <div className="flex justify-between items-start mb-2">
                 <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-primary">
-                    Biometric Audit Log
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    Testimonial
                   </span>
-                  <span className="font-mono text-[8px] text-muted-foreground uppercase">
+                  <span className="font-mono text-[8px] text-muted-foreground/60 uppercase">
                     Ref: {t.name.split('').map(c => c.charCodeAt(0)).join('').substring(0, 6)}
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">
-                  <div className="h-1 w-1 rounded-full bg-primary animate-pulse" />
-                  <span className="font-mono text-[9px] font-bold text-primary uppercase">Verified</span>
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-calm border border-calm/30">
+                  <div className="h-1 w-1 rounded-full bg-calm animate-pulse" />
+                  <span className="font-mono text-[9px] font-bold text-calm uppercase">Verified</span>
                 </div>
               </div>
 
@@ -72,13 +72,13 @@ export function SocialProof() {
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star
                     key={i}
-                    className="h-3 w-3 fill-primary text-primary"
+                    className="h-3 w-3 fill-calm text-calm"
                   />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-pretty leading-relaxed text-foreground italic border-l-2 border-primary/20 pl-4 py-1">
+              <p className="text-pretty leading-relaxed text-foreground italic border-l-2 border-calm/30 pl-4 py-1">
                 {`"${t.quote}"`}
               </p>
 
