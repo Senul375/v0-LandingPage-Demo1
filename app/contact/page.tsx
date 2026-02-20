@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import { Footer } from "@/components/landing/footer"
 import { CTABanner } from "@/components/landing/cta-banner"
-import { CTAModal } from "@/components/ui/cta-modal"
+import { useCTA } from "@/hooks/use-cta"
 import { LearnMoreModal } from "@/components/ui/learn-more-modal"
 
 export default function ContactPage() {
+  const { openModal } = useCTA()
   const [submitted, setSubmitted] = useState(false)
-  const [ctaOpen, setCtaOpen] = useState(false)
   const [learnMoreOpen, setLearnMoreOpen] = useState(false)
 
   function handleSubmit(e: React.FormEvent) {
@@ -194,7 +194,7 @@ export default function ContactPage() {
               <Button
                 size="lg"
                 className="w-full rounded-lg font-mono text-sm uppercase tracking-wider"
-                onClick={() => setCtaOpen(true)}
+                onClick={openModal}
               >
                 Join Program
               </Button>
@@ -215,16 +215,14 @@ export default function ContactPage() {
       <CTABanner
         headline="Ready to Build Your Executive Engine?"
         buttonText="Get the Protocol"
-        onCTAClick={() => setCtaOpen(true)}
       />
 
       <Footer />
 
-      <CTAModal open={ctaOpen} onOpenChange={setCtaOpen} />
       <LearnMoreModal
         open={learnMoreOpen}
         onOpenChange={setLearnMoreOpen}
-        onJoinClick={() => setCtaOpen(true)}
+        onJoinClick={openModal}
       />
     </div>
   )

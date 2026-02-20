@@ -8,11 +8,11 @@ import { FAQ } from "@/components/landing/faq"
 import { CTABanner } from "@/components/landing/cta-banner"
 import { Footer } from "@/components/landing/footer"
 import { BackToTop } from "@/components/ui/back-to-top"
-import { CTAProvider } from "@/hooks/use-cta"
+import { BackToTop } from "@/components/ui/back-to-top"
 
 export default function Page() {
   return (
-    <CTAProvider>
+    <>
       <Header />
 
       <main>
@@ -47,6 +47,6 @@ export default function Page() {
       <Footer />
 
       <BackToTop />
-    </CTAProvider>
+    </>
   )
 }

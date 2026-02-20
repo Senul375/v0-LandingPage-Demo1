@@ -45,6 +45,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+import { CTAProvider } from "@/hooks/use-cta"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -52,7 +54,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <CTAProvider>
+          {children}
+        </CTAProvider>
+      </body>
     </html>
   )
 }
