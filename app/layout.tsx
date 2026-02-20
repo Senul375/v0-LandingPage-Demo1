@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import AnalyticsDebug from "@/app/_components/AnalyticsDebug"
 
 import "./globals.css"
 
@@ -47,6 +48,7 @@ export const viewport: Viewport = {
 }
 
 import { CTAProvider } from "@/hooks/use-cta"
+import { Suspense } from "react"
 
 export default function RootLayout({
   children,
@@ -59,6 +61,9 @@ export default function RootLayout({
         <CTAProvider>
           {children}
         </CTAProvider>
+        <Suspense fallback={null}>
+          <AnalyticsDebug />
+        </Suspense>
         <Analytics />
       </body>
     </html>
