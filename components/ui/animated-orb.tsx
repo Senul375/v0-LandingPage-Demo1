@@ -60,6 +60,9 @@ export function AnimatedOrb() {
           delay: 1,
         }}
       />
+
+      {/* Scanline effect */}
+      <div className="scanline" />
     </div>
   )
 }

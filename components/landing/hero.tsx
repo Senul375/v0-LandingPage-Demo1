@@ -10,7 +10,7 @@ import { useCTA } from "@/hooks/use-cta"
 export function Hero() {
   const { openModal } = useCTA()
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden">
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden tactical-grid">
       {/* Animated Orb Background */}
       <AnimatedOrb />
 

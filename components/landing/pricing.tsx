@@ -6,6 +6,7 @@ import { Check, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { ScrollReveal } from "@/components/ui/scroll-reveal"
 import { useCTA } from "@/hooks/use-cta"
+import { Signature } from "@/components/ui/signature"
 
 const included = [
   "12-week personalised training protocol",
@@ -59,12 +60,12 @@ export function Pricing() {
               </p>
               <div className="mt-4 flex items-baseline justify-center gap-3">
                 <div className="flex flex-col items-end">
-                  <span className="text-xs text-muted-foreground">Total Value: $3,500</span>
-                  <span className="text-lg text-muted-foreground line-through">
+                  <span className="font-mono text-[9px] text-primary/60 uppercase tracking-tighter">ESTIMATED VALUE: $3,500</span>
+                  <span className="text-lg text-muted-foreground line-through decoration-primary/30">
                     $1,200
                   </span>
                 </div>
-                <span className="text-5xl font-bold text-primary">$599</span>
+                <span className="text-5xl font-bold text-primary tracking-tighter transition-all group-hover:scale-105">$599</span>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">
                 One-time investment. Total Transformation.
@@ -100,17 +101,21 @@ export function Pricing() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-8 flex flex-col items-center gap-3 text-center"
           >
-            <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-primary" />
-              <span className="font-mono text-sm font-semibold uppercase tracking-wider text-foreground">
-                The Ironclad Resilience Guarantee
-              </span>
+            <div className="flex flex-col items-center gap-4">
+              <div className="flex items-center gap-2">
+                <Shield className="h-5 w-5 text-primary" />
+                <span className="font-mono text-sm font-semibold uppercase tracking-wider text-foreground">
+                  Ironclad Resilience Guarantee
+                </span>
+              </div>
+              <Signature className="h-12 w-auto text-primary/40" />
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-              {
-                "Try the full protocol for 30 days. If you don't feel sharper, stronger, and more energised, we'll refund every penny. No questions asked."
-              }
+            <p className="max-w-md text-xs leading-relaxed text-muted-foreground italic">
+              "Try the full protocol for 30 days. If you don't feel sharper, stronger, and more energised, we'll refund every penny. No questions asked."
             </p>
+            <span className="font-mono text-[8px] uppercase tracking-[0.4em] text-primary/40">
+              Personal Commitment from Jax Sterling
+            </span>
           </motion.div>
         </div>
       </div>

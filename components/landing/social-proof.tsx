@@ -49,26 +49,42 @@ export function SocialProof() {
             <motion.div
               key={t.name}
               variants={staggerChild}
-              className="glass flex flex-col gap-5 rounded-xl p-8"
+              className="glass relative flex flex-col gap-5 rounded-xl p-8 border-primary/10 hover:border-primary/30 transition-colors"
             >
+              {/* Technical Header */}
+              <div className="flex justify-between items-start mb-2">
+                <div className="flex flex-col gap-1">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-primary">
+                    Biometric Audit Log
+                  </span>
+                  <span className="font-mono text-[8px] text-muted-foreground uppercase">
+                    Ref: {Math.random().toString(36).substring(7).toUpperCase()}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/10 border border-primary/20">
+                  <div className="h-1 w-1 rounded-full bg-primary animate-pulse" />
+                  <span className="font-mono text-[9px] font-bold text-primary uppercase">Verified</span>
+                </div>
+              </div>
+
               {/* Stars */}
               <div className="flex gap-1">
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star
                     key={i}
-                    className="h-4 w-4 fill-primary text-primary"
+                    className="h-3 w-3 fill-primary text-primary"
                   />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-pretty leading-relaxed text-foreground">
+              <p className="text-pretty leading-relaxed text-foreground italic border-l-2 border-primary/20 pl-4 py-1">
                 {`"${t.quote}"`}
               </p>
 
               {/* Author */}
-              <div className="mt-auto flex items-center gap-3">
-                <div className="relative h-10 w-10 overflow-hidden rounded-full">
+              <div className="mt-auto flex items-center gap-3 pt-4 border-t border-white/5">
+                <div className="relative h-12 w-12 overflow-hidden rounded-lg border border-white/10">
                   <Image
                     src={t.avatar}
                     alt={`${t.name} testimonial`}
@@ -77,10 +93,10 @@ export function SocialProof() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-foreground">
+                  <p className="font-mono text-sm font-bold text-foreground uppercase tracking-tight">
                     {t.name}
                   </p>
-                  <p className="text-xs text-muted-foreground">{t.role}</p>
+                  <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-wider">{t.role}</p>
                 </div>
               </div>
             </motion.div>
